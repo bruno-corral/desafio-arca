@@ -50,7 +50,12 @@ class CompaniesController extends Controller
 
     public function search(SearchFormRequest $request)
     {
-        $companies = Company::where('company', 'LIKE', '%' . $request->searchCompanies . '%')->get();
+        $companies = Company::where('company', 'LIKE', '%' . $request->searchCompanies . '%')
+            ->orWhere('address', 'LIKE', '%'. $request->searchCompanies .'%')
+            ->orWhere('zipcode', 'LIKE', '%'. $request->searchCompanies .'%')
+            ->orWhere('city', 'LIKE', '%'. $request->searchCompanies .'%')
+            ->orWhere('category', 'LIKE', '%'. $request->searchCompanies .'%')
+            ->get();
 
         return view(
             'companies.index', 
