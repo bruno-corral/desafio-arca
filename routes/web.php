@@ -16,11 +16,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 /* Companies */
 Route::get('/companies', [CompaniesController::class, 'index'])->name('list_companies')->middleware('authenticator');
 Route::get('/companies/create', [CompaniesController::class, 'create'])->name('form_create_company')->middleware('authenticator');
 Route::post('/companies/create', [CompaniesController::class, 'store'])->middleware('authenticator');
 Route::get('/companies/{companyId}/companiesDetails', [CompaniesController::class, 'companiesDetails'])->middleware('authenticator');
+
+/* Search */
+Route::post('/companies/search', [CompaniesController::class, 'search'])->name('search_companies');
 
 /* Login */
 Route::get('/login', [LoginController::class, 'index'])->name('login');
