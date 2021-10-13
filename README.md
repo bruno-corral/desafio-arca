@@ -1,4 +1,4 @@
-### Sobre o Projeto
+# Sobre o Projeto
 
 ## Tecnologias usadas
 
